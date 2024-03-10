@@ -1,0 +1,22 @@
+def f(x):
+    s = ''
+    while x:
+        ost = str(x%15)
+        s = ost + s
+        x = x // 15
+    return s
+
+lowr = []
+for x in range(16,1000):
+    b = f(x)
+    if x % 15 == 0:
+        b = b + b[0] + b[1]
+    if x % 15 != 0:
+        c = f((x%15)*13)
+        b = b + c
+    r = int(b)
+    if r > 700:
+        lowr.append(r)
+v = str(min(lowr))
+v = int(v,15)
+print(v)
