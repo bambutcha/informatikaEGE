@@ -1,12 +1,17 @@
 def f(x):
-    s = set()
-    for i in range(2, int(x**0.5) + 1):
+    divisors = []
+    for i in range(1, int(x**0.5) + 1):
         if x % i == 0:
-            s.add(i)
-            s.add(x//i)
-    return sorted(s)
+            divisors.append(i)
+            if i != x // i:  # добавляем только один из парных делителей
+                divisors.append(x // i)
+    if len(divisors) == 5:
+        return sorted(divisors[-2:])  # возвращаем два наибольших делителя
+    return []
 
-for x in range(123456, 987655):
-    s = f(x)
-    if len(s) == 5:
-        print(s)
+a = 123456
+b = 987654
+for x in range(a, b+1):
+    divisors = f(x)
+    if divisors:
+        print(f"{divisors[1]} {x}")
