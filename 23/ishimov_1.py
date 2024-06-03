@@ -1,4 +1,4 @@
-def f(c,e):
+def f(c, e):
     if c > e or c == 21: return 0
     if c == e: return 1
     if c < e:
